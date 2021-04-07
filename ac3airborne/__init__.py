@@ -52,7 +52,7 @@ def get_intake_catalog():
     """
     Open the intake data catalog.
 
-    The catalog provides access to public EUREC4A datasets without the need to
+    The catalog provides access to public AC3 airborne datasets without the need to
     manually specify URLs to the individual datasets.
     """
     return intake.open_catalog("https://raw.githubusercontent.com/igmk/ac3airborne-intake/main/catalog.yml")
