@@ -1,3 +1,5 @@
+import warnings
+
 class FlightPhaseFile(object):
     """
     The FlightPhaseFile object stores the yaml content of a flight phase file
@@ -56,14 +58,16 @@ class FlightPhaseFile(object):
         """
         if strict:
             if invertSelection:
-                return [s for s in self.ds['segments'] if s.get(attribute) != [value]]
+                segments = [s for s in self.ds['segments'] if s.get(attribute) != [value]]
             else:
-                return [s for s in self.ds['segments'] if s.get(attribute) == [value]]
+                segments = [s for s in self.ds['segments'] if s.get(attribute) == [value]]
         else:
             if invertSelection:
-                return [s for s in self.ds['segments'] if not(s.get(attribute) and value in s.get(attribute))]
+                segments = [s for s in self.ds['segments'] if not(s.get(attribute) and value in s.get(attribute))]
             else:
-                return [s for s in self.ds['segments'] if s.get(attribute) and value in s.get(attribute)]
+                segments = [s for s in self.ds['segments'] if s.get(attribute) and value in s.get(attribute)]
+        irregularities(segments)
+        return segments
 
     def selectKind(self, kind, invertSelection=False):
         """
@@ -89,9 +93,11 @@ class FlightPhaseFile(object):
             A list of dictionaries each containing a segment.
         """
         if invertSelection:
-            return [s for s in self.ds['segments'] if not any(item in kind for item in s.get('kinds'))]
+            segments = [s for s in self.ds['segments'] if not any(item in kind for item in s.get('kinds'))]
         else:
-            return [s for s in self.ds['segments'] if any(item in kind for item in s.get('kinds'))]
+            segments = [s for s in self.ds['segments'] if any(item in kind for item in s.get('kinds'))]
+        irregularities(segments)
+        return segments
 
     def selectDropSondes(self, type):
         """
@@ -109,4 +115,13 @@ class FlightPhaseFile(object):
         segments: list
             A list of dictionaries each containing a segment.
         """
-        return [s for s in self.ds['segments'] if s.get('dropsondes') and s['dropsondes'][type]]
+        segments = [s for s in self.ds['segments'] if s.get('dropsondes') and s['dropsondes'][type]]
+        irregularities(segments)
+        return segments
+
+    def irregularities(self, segments):
+        for s in segments:
+            if s['irregularities']:
+                str = s['segment_id'] + " contains following irregularities: " + s['irregularities']
+                warnings.warn(str)
+        pass
