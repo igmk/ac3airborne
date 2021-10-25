@@ -125,3 +125,28 @@ class FlightPhaseFile(object):
                 str = s['segment_id'] + " contains following irregularities: " + s['irregularities']
                 warnings.warn(str)
         pass
+
+    def findSegments(starttime, endtime):
+        """
+        The method findSegments is used for searching for flight segments,
+        which are contained in a specific range of time.
+
+        Parameters
+        ----------
+        starttime : str
+            String containing the start time in the '%Y-%m-%d %H:%M:%S' format.
+        endtime: str
+            String containing the end time in the '%Y-%m-%d %H:%M:%S' format.
+
+        Returns
+        -------
+        segments: list
+            A list of dictionaries each containing a segment.
+        """
+        s_start  = datetime.strptime(s['start'], '%Y-%m-%d %H:%M:%S')
+        s_end    = datetime.strptime(s['end'], '%Y-%m-%d %H:%M:%S')
+        start_t  = datetime.strptime(starttime, '%Y-%m-%d %H:%M:%S')
+        end_t    = datetime.strptime(endtime, '%Y-%m-%d %H:%M:%S')
+        segments = [s for s in self.ds['segments'] if (s_start <= end_t) and (s_end >= start_t)]
+        irregularities(segments)
+        return segments
