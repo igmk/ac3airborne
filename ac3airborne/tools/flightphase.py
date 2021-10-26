@@ -18,6 +18,13 @@ class FlightPhaseFile(object):
         super(FlightPhaseFile, self).__init__()
         self.ds = yaml_content
 
+    def irregularities(self, segments):
+        for s in segments:
+            if s['irregularities']:
+                str = s['segment_id'] + " contains following irregularities: " + s['irregularities']
+                warnings.warn(str)
+        pass
+
     def select(self, attribute, value, invertSelection=False, strict=False):
         """
         The method select just selects all flight segments that have a specific
@@ -66,7 +73,7 @@ class FlightPhaseFile(object):
                 segments = [s for s in self.ds['segments'] if not(s.get(attribute) and value in s.get(attribute))]
             else:
                 segments = [s for s in self.ds['segments'] if s.get(attribute) and value in s.get(attribute)]
-        irregularities(segments)
+        self.irregularities(segments)
         return segments
 
     def selectKind(self, kind, invertSelection=False):
@@ -96,7 +103,7 @@ class FlightPhaseFile(object):
             segments = [s for s in self.ds['segments'] if not any(item in kind for item in s.get('kinds'))]
         else:
             segments = [s for s in self.ds['segments'] if any(item in kind for item in s.get('kinds'))]
-        irregularities(segments)
+        self.irregularities(segments)
         return segments
 
     def selectDropSondes(self, type):
@@ -116,15 +123,8 @@ class FlightPhaseFile(object):
             A list of dictionaries each containing a segment.
         """
         segments = [s for s in self.ds['segments'] if s.get('dropsondes') and s['dropsondes'][type]]
-        irregularities(segments)
+        self.irregularities(segments)
         return segments
-
-    def irregularities(self, segments):
-        for s in segments:
-            if s['irregularities']:
-                str = s['segment_id'] + " contains following irregularities: " + s['irregularities']
-                warnings.warn(str)
-        pass
 
     def findSegments(starttime, endtime):
         """
@@ -148,5 +148,5 @@ class FlightPhaseFile(object):
         start_t  = datetime.strptime(starttime, '%Y-%m-%d %H:%M:%S')
         end_t    = datetime.strptime(endtime, '%Y-%m-%d %H:%M:%S')
         segments = [s for s in self.ds['segments'] if (s_start <= end_t) and (s_end >= start_t)]
-        irregularities(segments)
+        self.irregularities(segments)
         return segments
