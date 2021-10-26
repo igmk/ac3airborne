@@ -21,7 +21,8 @@ class FlightPhaseFile(object):
     def irregularities(self, segments):
         for s in segments:
             if s['irregularities']:
-                str = s['segment_id'] + " contains following irregularities: " + s['irregularities']
+                str = 'the segment ' + s['segment_id'] + ' contains following irregularities: '
+                str += ''.join(s['irregularities'])
                 warnings.warn(str)
         pass
 
