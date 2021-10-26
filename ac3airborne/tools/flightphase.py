@@ -1,4 +1,5 @@
 import warnings
+from datetime import datetime
 
 class FlightPhaseFile(object):
     """
@@ -20,9 +21,9 @@ class FlightPhaseFile(object):
 
     def irregularities(self, segments):
         for s in segments:
-            if s['irregularities']:
-                str = 'the segment ' + s['segment_id'] + ' contains following irregularities: '
-                str += ''.join(s['irregularities'])
+            if s.get('irregularities'):
+                str = 'the segment ' + s.get('segment_id') + ' contains following irregularities: '
+                str += ''.join(s.get('irregularities'))
                 warnings.warn(str)
         pass
 
@@ -127,7 +128,7 @@ class FlightPhaseFile(object):
         self.irregularities(segments)
         return segments
 
-    def findSegments(starttime, endtime):
+    def findSegments(self, starttime, endtime):
         """
         The method findSegments is used for searching for flight segments,
         which are contained in a specific range of time.
@@ -144,10 +145,8 @@ class FlightPhaseFile(object):
         segments: list
             A list of dictionaries each containing a segment.
         """
-        s_start  = datetime.strptime(s['start'], '%Y-%m-%d %H:%M:%S')
-        s_end    = datetime.strptime(s['end'], '%Y-%m-%d %H:%M:%S')
         start_t  = datetime.strptime(starttime, '%Y-%m-%d %H:%M:%S')
         end_t    = datetime.strptime(endtime, '%Y-%m-%d %H:%M:%S')
-        segments = [s for s in self.ds['segments'] if (s_start <= end_t) and (s_end >= start_t)]
+        segments = [s for s in self.ds['segments'] if (s['start'] <= end_t) and (s['end'] >= start_t)]
         self.irregularities(segments)
         return segments
