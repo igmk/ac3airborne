@@ -90,7 +90,7 @@ class FlightPhaseFile(object):
         ----------
         kinds : list
             A list of values for the keyword "kinds". Please see the reference
-            for the keyword "kinds" on the how_to_pyac3airborne Jupyter Book.
+            for the keyword "kinds" on the how_to_ac3airborne Jupyter Book.
         invertSelection : bool, optional
             If is set to True it inverts the selection and return all flight
             segments that don't match the given value for the given attribute.
