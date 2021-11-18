@@ -4,18 +4,15 @@ This package intents to make the access to the airborne data collected within th
 
 ## installation
 
-At the moment the package is still in the testing phase. There are two options to install it. Either download the package from github or get it from the pip test server. But before it is recommended to install dependencies needed to run the module.
+At the moment the package is still in the testing phase. Before installing ac3airborne it is recommended to install the dependencies needed to run the module. Here is the only available way to install it (the version on TestPyPI will not be updated anymore):
 
 ```bash
 pip install aiohttp intake!=0.6.1 intake_xarray netCDF4 h5netcdf
-pip install -i https://test.pypi.org/simple/ ac3airborne
+pip install git+https://github.com/igmk/ac3airborne.git
 ```
 
-If you want to get an update, you first have to manually uninstall the old version. Updating does not work with the test server (to our knowledge).
+If you want to get an update, just reinstall the package.
 
-```bash
-pip uninstall ac3airborne
-```
 ## usage
 
 The package provides a few functions to obtain data from the campaigns and can be used in the following way.
