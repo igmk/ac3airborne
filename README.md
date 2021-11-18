@@ -6,12 +6,37 @@ This package intents to make the access to the airborne data collected within th
 
 At the moment the package is still in the testing phase. Before installing ac3airborne it is recommended to install the dependencies needed to run the module. Here is the only available way to install it (the version on TestPyPI will not be updated anymore):
 
+### 1. Check the latest release
+
+Check the latest available release on this page. It always has the form: `vX.X.X` for example `v0.0.6`.
+
+### 2. Install the dependencies
+
 ```bash
 pip install aiohttp intake!=0.6.1 intake_xarray netCDF4 h5netcdf
+```
+
+### 3. Install the desired release
+
+Specify the desired release after the `@`:
+
+```bash
+pip install git+https://github.com/igmk/ac3airborne.git@vX.X.X
+```
+
+for example:
+
+```bash
+pip install git+https://github.com/igmk/ac3airborne.git@v0.0.6
+```
+
+If you also want to install the latest (but maybe unstable) version just omit the release tag:
+
+```bash
 pip install git+https://github.com/igmk/ac3airborne.git
 ```
 
-If you want to get an update, just reinstall the package.
+If you want to get an update, just reinstall the package (that should automatically uninstall the previous version).
 
 ## usage
 
