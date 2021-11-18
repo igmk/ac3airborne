@@ -1,10 +1,12 @@
 # setup.py
 from distutils.core import setup
 from setuptools import find_packages
+from version import get_git_version
+
 setup(
   name='ac3airborne',
   packages=find_packages(),
-  version='0.0.7.dev1',
+  version=get_git_version(),
   description='Common utilities for analysing data from the ACLOUD, AFLUX and MOSAiC-ACA airborne campaigns',
   long_description=open('README.md').read(),
   long_description_content_type='text/markdown',
