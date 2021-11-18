@@ -1,0 +1,2 @@
+include versioneer.py
+include ac3airborne/_version.py
