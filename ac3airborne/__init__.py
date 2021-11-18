@@ -1,6 +1,7 @@
 import intake
 import requests
 import yaml
+import constants
 
 from ._version import get_versions
 __version__ = get_versions()['version']
