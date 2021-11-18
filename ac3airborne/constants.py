@@ -17,7 +17,7 @@ LYB = {
 LYR = {
   name: 'Svalbard Airport, Longyear',
   icao: 'ENSB',
-  iata: 'LYR'
+  iata: 'LYR',
   lon: 15.465556,
   lat: 78.246111,
   elev_m: 28.,
