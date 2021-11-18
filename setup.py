@@ -4,7 +4,7 @@ from setuptools import find_packages
 setup(
   name='ac3airborne',
   packages=find_packages(),
-  version='0.0.6.dev0',
+  version='0.0.7.dev0',
   description='Common utilities for analysing data from the ACLOUD, AFLUX and MOSAiC-ACA airborne campaigns',
   long_description=open('README.md').read(),
   long_description_content_type='text/markdown',
