@@ -78,7 +78,7 @@ class FlightPhaseFile(object):
         self.irregularities(segments)
         return segments
 
-    def selectKind(self, kind, invertSelection=False):
+def selectKind(self, kind, invertSelection=False, parts=False):
         """
         The method selectKind is designed for selecting one or more kinds. You
         can achieve the same result by using the select method, but you will end
@@ -95,16 +95,38 @@ class FlightPhaseFile(object):
             If is set to True it inverts the selection and return all flight
             segments that don't match the given value for the given attribute.
             Default is False.
+        parts : bool, optional
+            Whether include the "parts" of a pattern in the search.
+            Default is False.
 
         Returns
         -------
         segments: list
             A list of dictionaries each containing a segment.
         """
-        if invertSelection:
-            segments = [s for s in self.ds['segments'] if not any(item in kind for item in s.get('kinds'))]
+        if parts:
+            if invertSelection:
+                segments = [s for s in self.ds['segments'] if not any(item in kind for item in s.get('kinds'))]
+                partslst = []
+                for s in self.ds['segments']:
+                    if s.get('parts') != None:
+                        for p in s.get('parts'):
+                            if not any(item in kind for item in s.get('kinds')):
+                                partslst.append(p)
+            else:
+                segments = [s for s in self.ds['segments'] if any(item in kind for item in s.get('kinds'))]
+                partslst = []
+                for s in self.ds['segments']:
+                    if s.get('parts') != None:
+                        for p in s.get('parts'):
+                            if any(item in kind for item in p.get('kinds')):
+                                partslst.append(p)
+            segments.extend(partslst)
         else:
-            segments = [s for s in self.ds['segments'] if any(item in kind for item in s.get('kinds'))]
+            if invertSelection:
+                segments = [s for s in self.ds['segments'] if not any(item in kind for item in s.get('kinds'))]
+            else:
+                segments = [s for s in self.ds['segments'] if any(item in kind for item in s.get('kinds'))]
         self.irregularities(segments)
         return segments
 
