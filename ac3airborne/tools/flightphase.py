@@ -78,7 +78,7 @@ class FlightPhaseFile(object):
         self.irregularities(segments)
         return segments
 
-def selectKind(self, kind, invertSelection=False, parts=True):
+    def selectKind(self, kind, invertSelection=False, parts=True):
         """
         The method selectKind is designed for selecting one or more kinds. You
         can achieve the same result by using the select method, but you will end
