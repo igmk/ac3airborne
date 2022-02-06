@@ -51,7 +51,7 @@ In [1]: import ac3airborne
 ```ipython
 In [2]: flightinfo = ac3airborne.get_flight_segments()
 
-In [3]: flightinfo['P5']['ACLOUD_P5_RF14']['takeoff']
+In [3]: flightinfo['ACLOUD']['P5']['ACLOUD_P5_RF14']['takeoff']
 Out[3]: datetime.datetime(2017, 6, 8, 7, 36, 50)
 ```
 
@@ -59,10 +59,10 @@ Out[3]: datetime.datetime(2017, 6, 8, 7, 36, 50)
 
 ```ipython
 In [4]: cat = ac3airborne.get_intake_catalog()
-In [5]: list(cat.Polar5.MIRAC_A)                                                                                                                                                                                      
+In [5]: list(cat['ACLOUD']['P5']['MiRAC-A'])                                                                                                                                                                                      
 Out[5]: 
 ['ACLOUD_P5_RF04',
  'ACLOUD_P5_RF05',
  ...
- 'MOSAiC-ACA_P5_RF11']
+ 'ACLOUD_P5_RF25']
 ```
