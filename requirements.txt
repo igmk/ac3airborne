@@ -2,4 +2,4 @@ aiohttp
 intake!=0.6.1
 intake_xarray
 netCDF4
-h5netcdf
+h5netcdf #
