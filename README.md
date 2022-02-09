@@ -4,7 +4,7 @@ This package intents to make the access to the airborne data collected within th
 
 ## installation
 ```bash
-pip install git+https://github.com/igmk/ac3airborne.git
+pip install git+https://github.com/igmk/ac3airborne.git@halo-ac3
 ```
 
 If you want to get an update, just reinstall the package.
