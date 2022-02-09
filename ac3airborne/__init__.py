@@ -57,7 +57,7 @@ def get_intake_catalog():
     The catalog provides access to public AC3 airborne datasets without the need to
     manually specify URLs to the individual datasets.
     """
-    return intake.open_catalog("https://raw.githubusercontent.com/igmk/ac3airborne-intake/main/catalog.yaml")
+    return intake.open_catalog("https://raw.githubusercontent.com/igmk/ac3airborne-intake/halo-ac3/catalog.yaml")
 
 
 __all__ = ["get_flight_segments",
