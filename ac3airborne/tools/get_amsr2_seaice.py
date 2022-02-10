@@ -14,4 +14,3 @@ def get_amsr2_seaice(yyyymmdd):
 	                           })
 
 	return mycat['flight_id'].to_dask()
-
