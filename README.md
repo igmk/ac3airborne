@@ -1,20 +1,14 @@
 # ac3airborne: AC3 airborne python tools 
 
-This package intents to make the access to the airborne data collected within the various [AC3](http://www.ac3-tr.de/) airborne campaigns more easy. To make use of the package, it is best to study the [how_to_ac3airborne](https://igmk.github.io/how_to_ac3airborne/intro.html), which is a description of most of the data and a collection of examples and tools.
+This package intents to make the access to the airborne data collected within the various [AC3](http://www.ac3-tr.de/) airborne campaigns more easy. To make use of the package, it is best to study the [how_to_ac3airborne](https://igmk.github.io/how_to_ac3airborne/intro.html), which is a description of most of the data sets and a collection of examples and tools.
 
 ## installation
-The more *stable* package including only the campaigns pre HALO-AC3 can be installed by:
+The package can be installed by:
 ```bash
-pip install git+https://github.com/igmk/ac3airborne.git@halo-ac3
+pip install git+https://github.com/igmk/ac3airborne.git
 ```
 
-**If you are interested in the growing package including the HALO-AC3 campaign, add *@halo-ac3* to the installation command.**
-
-```bash
-pip install git+https://github.com/igmk/ac3airborne.git@halo-ac3
-```
-
-If you want to get an update, just reinstall the package.
+We are continously working on *ac3airborne*. If you want to install an updated version, just reinstall the package by the command above.
 
 ## usage
 
