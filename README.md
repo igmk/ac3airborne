@@ -5,7 +5,7 @@ This package intents to make the access to the airborne data collected within th
 ## installation
 The more *stable* package including only the campaigns pre HALO-AC3 can be installed by:
 ```bash
-pip install git+https://github.com/igmk/ac3airborne.git
+pip install git+https://github.com/igmk/ac3airborne.git@halo-ac3
 ```
 
 **If you are interested in the growing package including the HALO-AC3 campaign, add *@halo-ac3* to the installation command.**
