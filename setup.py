@@ -6,7 +6,7 @@ import versioneer
 setup(
   name='ac3airborne',
   packages=find_packages(),
-  version=versioneer.get_version(),
+  version="0.1.0",
   cmdclass=versioneer.get_cmdclass(),
   description='Common utilities for analysing data from the AC3 airborne campaigns',
   long_description=open('README.md').read(),
