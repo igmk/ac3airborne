@@ -1,5 +1,5 @@
 aiohttp
 intake==0.7.0
-intake_xarray
+intake-xarray
 netCDF4
 h5netcdf
